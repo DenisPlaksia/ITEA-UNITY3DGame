@@ -4,16 +4,21 @@
 public class TowerTankData : ScriptableObject
 {
     [SerializeField] private float speed;
-    [SerializeField] private float ammo;
-
+    [SerializeField] private int ammo;
+    [SerializeField] private float timeBetweenAtack;
     public float GetSpeed()
     {
         return speed;
     }
 
 
-    public float GetAmmo()
+    public int GetAmmo()
     {
         return ammo;
+    }
+
+    public float GetTimeBetweenAtack()
+    {
+        return timeBetweenAtack;
     }
 }
