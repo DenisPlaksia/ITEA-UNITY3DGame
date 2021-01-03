@@ -798,6 +798,7 @@ MonoBehaviour:
   _nameChangePanel: {fileID: 184435700}
   inputField: {fileID: 580088412}
   saveName: {fileID: 22148021}
+  playerData: {fileID: 1048763797}
 --- !u!1 &259916749
 GameObject:
   m_ObjectHideFlags: 0
@@ -4175,6 +4176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048763795}
   - component: {fileID: 1048763796}
+  - component: {fileID: 1048763797}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -4213,6 +4215,18 @@ MonoBehaviour:
   _tower: {fileID: 1158444109}
   _caterpillar: {fileID: 1953637037}
   health: 0
+--- !u!114 &1048763797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048763794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d990bc3c51c573479ba210a59302ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1052018911
 GameObject:
   m_ObjectHideFlags: 0
@@ -8128,3 +8142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: {fileID: 2108908610}
+  playerData: {fileID: 1048763797}

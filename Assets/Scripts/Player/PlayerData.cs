@@ -1,23 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerData : MonoBehaviour
 {
-    private static string name = "Denis";
-    public static string Name
+    private static string _name = "No name";
+    public event Action<string> OnNameChange;
+
+
+    public string GetName() => _name;
+    public void SetName(string name)
     {
-        get => name;
-        set
+        if(name.Length > 9)
         {
-            if(value.Length > 9)
-            {
-                name = " ";
-            }
-            else
-            {
-                name = value;
-            }
+            _name = " ";
+        }
+        else
+        {
+            _name = name;
+            OnNameChange.Invoke(name);
         }
     }
 }

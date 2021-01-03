@@ -9,20 +9,20 @@ public class NameChangePanel : MonoBehaviour
     [SerializeField] private GameObject _nameChangePanel;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button saveName;
-
+    [SerializeField] private PlayerData playerData;
 
     private void Start()
     {
         saveName.onClick.AddListener(SetNameFromInput);
-        
+        inputField.onValueChanged.AddListener(GetNameFromInput);
     }
     private void SetNameFromInput()
     {
-        inputField.onValueChanged.AddListener(GetNameFromInput);
         _nameChangePanel.SetActive(false);
+        PlayerPrefs.SetString("Name", playerData.GetName());
     }
     private void GetNameFromInput(string name)
     {
-        PlayerData.Name = name;
+        playerData.SetName(name);
     }
 }
