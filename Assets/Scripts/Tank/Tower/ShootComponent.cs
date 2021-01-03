@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootComponent : MonoBehaviour
 {
 
     [SerializeField] private GameObject _point;
     [SerializeField] private GameObject _bullet;
+    [SerializeField] private Button _shootButton;
 
     private Ray _ray;
     private bool _canAttack;
@@ -15,6 +17,10 @@ public class ShootComponent : MonoBehaviour
     public float TimeBetweenAtack { get; set; }
     private void ResetAttack() => _canAttack = false;
 
+    private void Start()
+    {
+        _shootButton.onClick.AddListener(Shoot);
+    }
     public void Shoot()
     {
         if (AmmoCheck() && !_canAttack)
