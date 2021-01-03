@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80ede2273bc3e104d9660a58097d8c28, type: 3}
-  m_Name: StandartTower
+  m_Name: FastTower
   m_EditorClassIdentifier: 
-  speed: 1.5
-  ammo: 0
+  speed: 2
+  ammo: 3
+  timeBetweenAtack: 2
+  _towerMesh: {fileID: -5796408922450401966, guid: 707f83b33073bfa438c35e27886ca83a,
+    type: 3}

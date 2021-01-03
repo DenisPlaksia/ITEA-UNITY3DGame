@@ -15,3 +15,5 @@ MonoBehaviour:
   speed: 1.5
   ammo: 5
   timeBetweenAtack: 1.5
+  _towerMesh: {fileID: -5796408922450401966, guid: 18178e7e7f8a69b4d8aadb89c24e0499,
+    type: 3}

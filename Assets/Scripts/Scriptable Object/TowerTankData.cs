@@ -6,6 +6,12 @@ public class TowerTankData : ScriptableObject
     [SerializeField] private float speed;
     [SerializeField] private int ammo;
     [SerializeField] private float timeBetweenAtack;
+    [SerializeField] private Mesh _towerMesh;
+
+    public Mesh GetMesh()
+    {
+        return _towerMesh;
+    }
     public float GetSpeed()
     {
         return speed;
