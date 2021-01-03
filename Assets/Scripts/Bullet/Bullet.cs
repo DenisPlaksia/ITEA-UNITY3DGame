@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody rb;
-    private float force = 20f;
+    private int force = 30;
 
     public Vector3 Direction { private get; set; }
     private void Start()
@@ -15,4 +15,12 @@ public class Bullet : MonoBehaviour
     }
 
     private void BulletPush() => rb.AddForce(Direction * force, ForceMode.Impulse);
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.GetComponent<IDamage>() != null)
+        {
+            collision.gameObject.GetComponent<IDamage>().GetDamage(force);
+        }
+    }
 }

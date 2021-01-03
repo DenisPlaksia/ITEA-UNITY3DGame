@@ -3,33 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Tank : MonoBehaviour
+public class Tank : MonoBehaviour, IDamage
 {
     [SerializeField] private Tower _tower;
     [SerializeField] private Caterpillar _caterpillar;
+    [SerializeField] private int health = 100;
    
     public Tower Tower { get => _tower; }
     public Caterpillar Caterpillar { get => _caterpillar; }
 
-    [SerializeField] private float health;
-    private Action<float> _healthEvent;
-    public event Action<float> HealthEvent
-    {
-        add
-        {
-            _healthEvent += value;//gameObject.GetComponentInChildren<HealthShow>().Show(health);
-        }
-        remove
-        {
 
+    public event Action<int> OnHealthChange;
+
+    public void GetDamage(int damage)
+    {
+        health -= damage;
+        OnHealthChange?.Invoke(health);
+        if (health <= 0)
+        {
+            Death();
         }
+
     }
 
-    private void Update()
+    private void Death()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            _healthEvent?.Invoke(health);
-        }
+        Destroy(gameObject);
     }
+
+
 }
