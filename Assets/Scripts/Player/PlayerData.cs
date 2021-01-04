@@ -8,7 +8,10 @@ public class PlayerData : MonoBehaviour
     private static string _name = "No name";
     public event Action<string> OnNameChange;
 
-
+    private void Start()
+    {
+        _name = PlayerPrefs.GetString("Name");
+    }
     public string GetName() => _name;
     public void SetName(string name)
     {
