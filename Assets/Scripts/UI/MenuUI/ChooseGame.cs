@@ -28,6 +28,6 @@ public class ChooseGame : MonoBehaviour
 
     private void OpenPVPGame()
     {
-        SceneManager.LoadScene("PVPScenes");
+        ScenesLoader.Load(ScenesLoader.Scene.PVPScenes);
     }
 }

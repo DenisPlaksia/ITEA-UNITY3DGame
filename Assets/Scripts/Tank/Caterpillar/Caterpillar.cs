@@ -11,7 +11,6 @@ public class Caterpillar : MonoBehaviour
         {
             moveComponent.Speed = _caterpillarData.GetSpeed();
             Debug.Log(moveComponent.Speed);
-
         }
     }
     public void SetCaterpillarTankData(CaterpillarTankData caterpillarTankData)
