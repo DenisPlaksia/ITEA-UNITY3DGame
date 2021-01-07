@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TowerMoveComponent : MonoBehaviour
 {
@@ -8,7 +6,11 @@ public class TowerMoveComponent : MonoBehaviour
 
     private Vector3 _direction;
 
-    public float Speed { get; set; }
+    public float Speed { get; private set; }
+    private void Start()
+    {
+        Speed = GetComponent<Tower>()._towerTankData.GetSpeed();
+    }
     private void Update()
     {
         _direction = new Vector3(0f, _towerMovementJoystick.Direction.x + _towerMovementJoystick.Direction.y, 0f);

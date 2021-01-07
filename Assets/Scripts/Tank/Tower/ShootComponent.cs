@@ -13,12 +13,14 @@ public class ShootComponent : MonoBehaviour
     private Ray _ray;
     private bool _canAttack;
 
-    public int Ammo { get; set; }
-    public float TimeBetweenAtack { get; set; }
+    public int Ammo { get; private set; }
+    public float TimeBetweenAtack { get; private set; }
     private void ResetAttack() => _canAttack = false;
 
     private void Start()
     {
+        Ammo = GetComponent<Tower>()._towerTankData.GetAmmo();
+        TimeBetweenAtack = GetComponent<Tower>()._towerTankData.GetTimeBetweenAtack();
         _shootButton.onClick.AddListener(Shoot);
     }
     public void Shoot()

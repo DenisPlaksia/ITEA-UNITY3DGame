@@ -6,11 +6,13 @@ using TMPro;
 public class HealthShow : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _health;
-    [SerializeField] private Tank tank;
+    private Tank tank;
 
     private void Start()
     {
+        tank = GetComponentInParent<Tank>();
         tank.OnHealthChange += Show;
+        Debug.Log(tank);
     }
 
     public void Show(int health)
