@@ -32,5 +32,12 @@ public class Tank : MonoBehaviour, IDamage
         Destroy(gameObject);
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.GetComponent<IInteractable>() != null)
+        {
+            collision.gameObject.GetComponent<IInteractable>().Interact(this);
+        }
+    }
 
 }

@@ -95,7 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank: {fileID: 9013119705896256167}
+  player: {fileID: 0}
   meshAgent: {fileID: 4883376987192420147}
+  radius: 5
 --- !u!195 &4883376987192420147
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -528,6 +530,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 7408970438194685259}
+--- !u!114 &1718640247454498736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642778486043623517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fea2e46e6060bd4084c6a8a7f9619fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _point: {fileID: 7408970436907685317}
+  _bullet: {fileID: 1924278531520375078, guid: 0fa4cfdc9bc5f74409a381f66f75e9eb, type: 3}
 --- !u!114 &8750474236644070072
 MonoBehaviour:
   m_ObjectHideFlags: 0

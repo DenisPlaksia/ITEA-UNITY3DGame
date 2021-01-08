@@ -1,4 +1,4 @@
 ﻿interface IInteractable
 {
-    void Interact();
+    void Interact(Tank tank);
 }

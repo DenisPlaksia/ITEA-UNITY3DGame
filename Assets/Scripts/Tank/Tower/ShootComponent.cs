@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
+using System;
 
 public class ShootComponent : MonoBehaviour
 {
 
     [SerializeField] private GameObject _point;
     [SerializeField] private GameObject _bullet;
-    [SerializeField] private Button _shootButton;
-
+    public event Action<int> OnAmmoChange;
     private Ray _ray;
     private bool _canAttack;
 
@@ -21,8 +18,15 @@ public class ShootComponent : MonoBehaviour
     {
         Ammo = GetComponent<Tower>()._towerTankData.GetAmmo();
         TimeBetweenAtack = GetComponent<Tower>()._towerTankData.GetTimeBetweenAtack();
-        _shootButton.onClick.AddListener(Shoot);
+        OnAmmoChange?.Invoke(Ammo);
     }
+
+    public void AddAmmo(int ammo)
+    {
+        Ammo += ammo;
+        OnAmmoChange?.Invoke(Ammo);
+    }
+
     public void Shoot()
     {
         if (AmmoCheck() && !_canAttack)
@@ -31,9 +35,9 @@ public class ShootComponent : MonoBehaviour
             _ray = new Ray(transform.position, transform.forward);
             var bullet = Instantiate(_bullet, _point.transform.position, _bullet.transform.rotation);
             bullet.GetComponent<Bullet>().Direction = _ray.direction;
-            bullet.name = gameObject.GetComponentInParent<PlayerData>().GetName();
             Invoke(nameof(ResetAttack), TimeBetweenAtack);
             Ammo--;
+            OnAmmoChange?.Invoke(Ammo);
         }
     }
 
