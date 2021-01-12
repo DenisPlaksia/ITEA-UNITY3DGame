@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 9013119705896256167}
   - component: {fileID: 1337418156639292513}
   - component: {fileID: 4883376987192420147}
-  m_Layer: 0
+  - component: {fileID: 3413165932200125297}
+  m_Layer: 9
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +98,20 @@ MonoBehaviour:
   tank: {fileID: 9013119705896256167}
   player: {fileID: 0}
   meshAgent: {fileID: 4883376987192420147}
+  _whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
+  winZona: {fileID: 0}
+  ShootAngle: 0
+  tagForEnemy: Team
+  winZonaTag: winZona
   radius: 5
+  StartState: {fileID: 11400000, guid: 04b68ddb7609b0d43ad6817b9f22b78d, type: 2}
+  AmmoFindState: {fileID: 11400000, guid: a030a69f3a3987f40b1dad26732f6e80, type: 2}
+  EnemyShootingState: {fileID: 11400000, guid: 0460a71af1fad3a4383a5f7354a728ac, type: 2}
+  WalkToWinZoneState: {fileID: 11400000, guid: 04b68ddb7609b0d43ad6817b9f22b78d, type: 2}
+  HealthFindState: {fileID: 11400000, guid: c2d39454b68ee6248a7dcd948392140b, type: 2}
+  currentState: {fileID: 0}
 --- !u!195 &4883376987192420147
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -120,6 +134,19 @@ NavMeshAgent:
   m_BaseOffset: 0.92
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &3413165932200125297
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7408970436385533611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7408970436907685317
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7408970436907685316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +188,7 @@ GameObject:
   - component: {fileID: 7408970437166292444}
   - component: {fileID: 7408970437166292441}
   - component: {fileID: 7408970437166292446}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +322,7 @@ GameObject:
   - component: {fileID: 7408970437848151047}
   - component: {fileID: 7408970437848151044}
   - component: {fileID: 7408970437848151045}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +422,7 @@ GameObject:
   - component: {fileID: 7408970438194685258}
   - component: {fileID: 7408970438194685259}
   - component: {fileID: 3833653144110132280}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,6 +670,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankDown#1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9e1fcb257c1093c468e0c751c7576fa2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e1fcb257c1093c468e0c751c7576fa2, type: 3}
 --- !u!4 &7015282375561182847 stripped
@@ -737,6 +769,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TankUp#1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18178e7e7f8a69b4d8aadb89c24e0499,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18178e7e7f8a69b4d8aadb89c24e0499, type: 3}

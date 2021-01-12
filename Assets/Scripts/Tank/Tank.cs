@@ -33,6 +33,11 @@ public class Tank : MonoBehaviour, IDamage
         OnHealthChange?.Invoke(health);
     }
 
+    public int GetHealth()
+    {
+        return health;
+    }
+
     private void Death()
     {
         Destroy(gameObject);

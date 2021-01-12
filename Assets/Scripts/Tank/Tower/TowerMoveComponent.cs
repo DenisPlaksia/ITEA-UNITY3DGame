@@ -2,7 +2,7 @@
 
 public class TowerMoveComponent : MonoBehaviour
 {
-    [SerializeField] private VariableJoystick _towerMovementJoystick;
+    [SerializeField] private VariableJoystick _towerMovementJoystick = null;
 
     private Vector3 _direction;
 
