@@ -5,13 +5,21 @@ using UnityEngine.AI;
 public class UnitBehavior : MonoBehaviour
 {
     [SerializeField] private Tank tank;
-    [SerializeField] private PlayerData player;
     [SerializeField] private NavMeshAgent meshAgent;
-    public LayerMask _whatIsEnemy;
-    private Collider _collider;
+    [SerializeField] private float radius;
+
+    [SerializeField] private State StartState;
+    [SerializeField] private State AmmoFindState;
+    [SerializeField] private State EnemyShootingState;
+    [SerializeField] private State WalkToWinZoneState;
+    [SerializeField] private State HealthFindState;
+
+    [Header("Actual state")]
+    [SerializeField] private State currentState;
+    private ShootComponent shootComponent;
+
     public GameObject winZona;
     public float ShootAngle;
-
     public string tagForEnemy;
     public string winZonaTag;
     public Tank Tank
@@ -28,27 +36,6 @@ public class UnitBehavior : MonoBehaviour
             return meshAgent;
         }
     }
-
-    public Collider Collider
-    {
-        get
-        {
-            return _collider;
-        }
-    }
-    [SerializeField] private float radius;
-
-    [SerializeField] private State StartState;
-    [SerializeField] private State AmmoFindState;
-    [SerializeField] private State EnemyShootingState;
-    [SerializeField] private State WalkToWinZoneState;
-    [SerializeField] private State HealthFindState;
-
-    [Header("Actual state")]
-    [SerializeField] private State currentState;
-
-    private float distance = 0f;
-    private ShootComponent shootComponent;
     public ShootComponent ShootComponent
     {
         get
@@ -62,14 +49,25 @@ public class UnitBehavior : MonoBehaviour
         SetState(StartState);
         meshAgent.speed = tank.Tower._towerTankData.GetSpeed();
     }
+
+    private void SetAllComponents()
+    {
+        tank = GetComponent<Tank>();
+        winZona = GameObject.FindGameObjectWithTag(winZonaTag);
+        tank.Tower._towerTankData = Test.TowerTankData;
+        tank.Tower.TryGetComponent<ShootComponent>(out shootComponent);
+        meshAgent = GetComponent<NavMeshAgent>();
+    }
+
     private void Update()
     {
         if (!currentState.IsFinished)
         {
             currentState.Run();
         }
-        else if (shootComponent.Ammo <= 0)
+        else if (shootComponent.Ammo <= 2)
         {
+            
             SetState(AmmoFindState);
         }
         else if (Tank.GetHealth() <= 50)
@@ -80,32 +78,30 @@ public class UnitBehavior : MonoBehaviour
         {
             SetState(WalkToWinZoneState);
         }
+        else
+        {
+            SetState(WalkToWinZoneState);
+        }
 
     }
 
-
     public void SetState(State state)
     {
+        
         currentState = Instantiate(state);
         currentState.unit = this;
         currentState.Init();
     }
-    private void SetAllComponents()
+
+    public void StopState()
     {
-        player = FindObjectOfType<PlayerData>();
-        tank = GetComponent<Tank>();
-        winZona = GameObject.FindGameObjectWithTag(winZonaTag);
-        tank.Tower._towerTankData = Test.TowerTankData;
-        tank.Tower.TryGetComponent<ShootComponent>(out shootComponent);
-        meshAgent = GetComponent<NavMeshAgent>();
-        _collider = GetComponent<Collider>();
+        currentState.Stop();
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == tagForEnemy)
+        if (other.gameObject.tag == tagForEnemy)
         {
-            Debug.Log("Collis");
             currentState.Stop();
             SetState(EnemyShootingState);
         }
@@ -113,7 +109,7 @@ public class UnitBehavior : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == tagForEnemy)//other.gameObject.tag == "Player"
+        if (other.gameObject.tag == tagForEnemy)
         {
             var targetPosition = other.transform.position;
             targetPosition.y = transform.position.y;
@@ -126,8 +122,6 @@ public class UnitBehavior : MonoBehaviour
     {
         if (other.gameObject.tag == tagForEnemy)
         {
-            Debug.Log("CollisExit");
-            tank.Tower.transform.Rotate(0f, 0f, 0f);
             currentState.Stop();
             SetState(WalkToWinZoneState);
         }

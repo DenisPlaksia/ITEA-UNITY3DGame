@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HeartAdd : MonoBehaviour, IInteractable
 {
@@ -8,6 +6,11 @@ public class HeartAdd : MonoBehaviour, IInteractable
     {
         int rand = Random.Range(50, 81);
         tank.AddHealth(rand);
+        if (tank.TryGetComponent<UnitBehavior>(out UnitBehavior unit))
+        {
+            unit.StopState();
+            Destroy(gameObject);
+        }
         Destroy(gameObject);
     }
 }

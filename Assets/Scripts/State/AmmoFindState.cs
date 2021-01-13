@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu]
 public class AmmoFindState : State
@@ -41,6 +39,5 @@ public class AmmoFindState : State
     private void MoveToAmmo()
     {
         unit.MeshAgent.SetDestination(_ammo.position);
-        IsFinished = true;
     }
 }

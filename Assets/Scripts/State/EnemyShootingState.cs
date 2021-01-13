@@ -16,19 +16,18 @@ public class EnemyShootingState : State
     {
         if (IsFinished)
         {
-            
+
             return;
         }
         else
         {
-            if(unit.ShootComponent.Ammo == 0)
+            if (unit.ShootComponent.Ammo == 0)
             {
                 IsFinished = true;
                 unit.SetState(AmmoFindState);
             }
-            
+
             unit.ShootComponent.Shoot();
-            Debug.Log("Shoooot");
         }
     }
 

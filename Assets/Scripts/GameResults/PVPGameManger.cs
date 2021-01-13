@@ -16,8 +16,6 @@ public class PVPGameManger : MonoBehaviour
 
         enemyList.AddRange(enemy);
         teamList.AddRange(team);
-        Debug.Log($"EnemyList Length is {enemyList.Count}");
-        Debug.Log($"EnemyList Length is {teamList.Count}");
 
         foreach (var item in enemyList)
         {
@@ -33,9 +31,6 @@ public class PVPGameManger : MonoBehaviour
     private void RemoveFromEnemyList(Tank tank,string name)
     {
         enemyList.Remove(tank.GetComponent<Enemy>());
-        Debug.LogError($"Kill {tank.gameObject.name} == who kill {name}");
-        Debug.Log($"EnemyList Length is {enemyList.Count}");
-
         if(enemyList.Count == 0)
         {
             gameResults.OpenWindow();
@@ -46,7 +41,6 @@ public class PVPGameManger : MonoBehaviour
     private void RemoveFromTeammateList(Tank tank, string name)
     {
         teamList.Remove(tank.GetComponent<Teammate>()); 
-        Debug.LogError($"Kill {tank.gameObject.name} == who kill {name}");
         if (teamList.Count == 0)
         {
             gameResults.OpenWindow();
