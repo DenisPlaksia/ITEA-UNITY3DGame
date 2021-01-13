@@ -7,7 +7,7 @@ public class GameResults : MonoBehaviour
     [SerializeField] private GameObject _windowGameResult;
     [SerializeField] private Button _menuBackButton;
     [SerializeField] private TextMeshProUGUI _title;
-    
+    [SerializeField] private TextMeshProUGUI _kill;
     private void Start()
     {
         _menuBackButton.onClick.AddListener(OpenMenuButton);
@@ -26,5 +26,6 @@ public class GameResults : MonoBehaviour
     public void SetResults(string title)
     {
         _title.SetText(title);
+        _kill.SetText((PlayerResults.kill).ToString());
     }
 }

@@ -7,10 +7,17 @@ public class PlayerData : MonoBehaviour
 {
     private static string _name = "No name";
     public event Action<string> OnNameChange;
-
+    public static string Name
+    {
+        get
+        {
+            return _name;
+        }
+    }
     private void Start()
     {
         _name = PlayerPrefs.GetString("Name");
+        gameObject.name = _name;
     }
     public string GetName() => _name;
     public void SetName(string name)

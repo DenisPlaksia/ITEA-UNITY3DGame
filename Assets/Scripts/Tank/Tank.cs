@@ -43,6 +43,10 @@ public class Tank : MonoBehaviour, IDamage
     private void Death(string name)
     {
         OnDeath?.Invoke(this,name);
+        if(name == PlayerData.Name)
+        {
+            PlayerResults.kill++;
+        }
         Destroy(gameObject);
     }
 
