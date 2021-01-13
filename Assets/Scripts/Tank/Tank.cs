@@ -14,15 +14,17 @@ public class Tank : MonoBehaviour, IDamage
 
 
     public event Action<int> OnHealthChange;
+    public event Action<Tank,string> OnDeath;
 
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage,string name)
     {
         health -= damage;
+        string _name = name;
         OnHealthChange?.Invoke(health);
         if (health <= 0)
         {
-            Death();
+            Death(_name);
         }
 
     }
@@ -38,8 +40,9 @@ public class Tank : MonoBehaviour, IDamage
         return health;
     }
 
-    private void Death()
+    private void Death(string name)
     {
+        OnDeath?.Invoke(this,name);
         Destroy(gameObject);
     }
 

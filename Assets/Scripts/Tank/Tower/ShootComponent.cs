@@ -35,6 +35,7 @@ public class ShootComponent : MonoBehaviour
             _ray = new Ray(transform.position, transform.forward);
             var bullet = Instantiate(_bullet, _point.transform.position, _bullet.transform.rotation);
             bullet.GetComponent<Bullet>().Direction = _ray.direction;
+            bullet.gameObject.name = transform.parent.name;
             Invoke(nameof(ResetAttack), TimeBetweenAtack);
             Ammo--;
             OnAmmoChange?.Invoke(Ammo);

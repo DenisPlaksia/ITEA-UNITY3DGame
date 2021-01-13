@@ -4,7 +4,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
 
-    private void Start()
+    private void Awake()
     {
         Spawn();
     }

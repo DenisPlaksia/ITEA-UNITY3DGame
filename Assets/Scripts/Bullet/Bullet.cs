@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<IDamage>() != null)
         {
-            collision.gameObject.GetComponent<IDamage>().GetDamage(force);
+            collision.gameObject.GetComponent<IDamage>().GetDamage(force,gameObject.name);
         }
         if(collision.gameObject)
         {

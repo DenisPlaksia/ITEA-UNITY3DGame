@@ -8,7 +8,7 @@ public class AmmoShow : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _ammo;
     private Tank tank;
 
-    private void Start()
+    private void Awake()
     {
         tank = GetComponentInParent<Tank>();
         tank.Tower.GetComponent<ShootComponent>().OnAmmoChange += Show;
