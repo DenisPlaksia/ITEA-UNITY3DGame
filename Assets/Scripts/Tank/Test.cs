@@ -5,7 +5,7 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     private static TowerTankData tankData;
-
+    private static CaterpillarTankData caterpillar;
     public static TowerTankData TowerTankData
     {
         get
@@ -18,13 +18,25 @@ public class Test : MonoBehaviour
         }
     }
 
+    public static CaterpillarTankData CaterpillarTankData
+    {
+        get
+        {
+            return caterpillar;
+        }
+        set
+        {
+            caterpillar = value;
+        }
+    }
+
 
     [SerializeField] private TowerTankData _tankData;
-
+    [SerializeField] private CaterpillarTankData _caterpillarData;
 
     private void Awake()
     {
         TowerTankData = _tankData;
-        Debug.Log(TowerTankData.GetSpeed());
+        CaterpillarTankData = _caterpillarData;
     }
 }

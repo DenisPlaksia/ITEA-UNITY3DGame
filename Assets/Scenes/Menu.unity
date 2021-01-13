@@ -3452,6 +3452,7 @@ MonoBehaviour:
   _customPanel: {fileID: 783177303}
   _menuPanel: {fileID: 1951488520}
   towerItem: {fileID: 443778598}
+  caterpillarItem: {fileID: 999929995}
   tank: {fileID: 1048763796}
   _backButton: {fileID: 909877583}
   tankItem:
@@ -3459,6 +3460,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 01627ea48ba5d05408aa6167961d0518, type: 2}
     - {fileID: 11400000, guid: c391bcb3212054e46bd38944994809d9, type: 2}
     - {fileID: 11400000, guid: 01627ea48ba5d05408aa6167961d0518, type: 2}
+    caterpillarTankDatas:
+    - {fileID: 11400000, guid: c76c00e84ed9c1842a4af81c2f9a04ac, type: 2}
+    - {fileID: 11400000, guid: d685c9f2118de7a478edd1c96a31f1e4, type: 2}
+    - {fileID: 11400000, guid: 2cf20456f489c2a45a9e6bfa654511d4, type: 2}
 --- !u!1 &790482216
 GameObject:
   m_ObjectHideFlags: 0
@@ -4769,6 +4774,8 @@ MonoBehaviour:
     - m_Text: Stadart Caterpillar
       m_Image: {fileID: 0}
     - m_Text: Fast Caterpillar
+      m_Image: {fileID: 0}
+    - m_Text: Slow Caterpillar
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6720,6 +6727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankData: {fileID: 11400000, guid: 01627ea48ba5d05408aa6167961d0518, type: 2}
+  _caterpillarData: {fileID: 11400000, guid: c76c00e84ed9c1842a4af81c2f9a04ac, type: 2}
 --- !u!1 &1495942331
 GameObject:
   m_ObjectHideFlags: 0
@@ -8338,8 +8346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79889e91ae3a82b4c88be253729dd2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _caterpillarData: {fileID: 11400000, guid: c76c00e84ed9c1842a4af81c2f9a04ac, type: 2}
-  moveComponent: {fileID: 0}
 --- !u!1 &2006654914
 GameObject:
   m_ObjectHideFlags: 0

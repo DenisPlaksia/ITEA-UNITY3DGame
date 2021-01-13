@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CaterpillarMoveComponent : MonoBehaviour
 {
     [SerializeField] private VariableJoystick _movementJoystick;
     private Vector3 _direction;
-    public float Speed { get; set; } = 1f;
+    public float Speed { get; set; }
+
+    private void Start()
+    {
+        Speed = GetComponent<Caterpillar>().CaterpillarData.GetSpeed();
+    }
     private void FixedUpdate()
     {
         _direction = Vector3.forward * _movementJoystick.Vertical;

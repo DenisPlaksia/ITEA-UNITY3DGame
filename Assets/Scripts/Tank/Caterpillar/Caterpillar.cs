@@ -2,19 +2,15 @@
 
 public class Caterpillar : MonoBehaviour
 {
-    [SerializeField] private CaterpillarTankData _caterpillarData;
-    [SerializeField] private CaterpillarMoveComponent moveComponent;
+    public CaterpillarTankData CaterpillarData { get; set; }
+
     private void Start()
     {
-        moveComponent = GetComponent<CaterpillarMoveComponent>();
-        if (moveComponent != null)
-        {
-            moveComponent.Speed = _caterpillarData.GetSpeed();
-            Debug.Log(moveComponent.Speed);
-        }
+        SetCaterpillarTankData(Test.CaterpillarTankData);
     }
+
     public void SetCaterpillarTankData(CaterpillarTankData caterpillarTankData)
     {
-        _caterpillarData = caterpillarTankData;
+        CaterpillarData = caterpillarTankData;
     }
 }
