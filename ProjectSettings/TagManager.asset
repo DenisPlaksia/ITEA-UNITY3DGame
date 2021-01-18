@@ -9,6 +9,7 @@ TagManager:
   - winZonaEnemy
   - Enemy
   - Team
+  - Health
   layers:
   - Default
   - TransparentFX

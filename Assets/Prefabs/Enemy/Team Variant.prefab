@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7001856778565545449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4255708206081135678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb2cdfd8c44eb34998634e4665237fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5675461915796636752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,18 +26,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _point: {fileID: 4255708206636986192}
   _bullet: {fileID: 1924278531520375078, guid: 0fa4cfdc9bc5f74409a381f66f75e9eb, type: 3}
---- !u!114 &-7001856778565545449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255708206081135678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb2cdfd8c44eb34998634e4665237fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6764023234335554197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47,6 +47,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tagForEnemy
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337418156639292513, guid: 550a5566e6d5eb34990e6a6261521606,
+        type: 3}
+      propertyPath: wathIsEnemy.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 7408970436385533611, guid: 550a5566e6d5eb34990e6a6261521606,
         type: 3}
@@ -117,6 +122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408970436907685316, guid: 550a5566e6d5eb34990e6a6261521606,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.366
       objectReference: {fileID: 0}
     - target: {fileID: 7408970436907685317, guid: 550a5566e6d5eb34990e6a6261521606,
         type: 3}

@@ -8,7 +8,7 @@ public class Tank : MonoBehaviour, IDamage
     [SerializeField] private Tower _tower;
     [SerializeField] private Caterpillar _caterpillar;
     [SerializeField] private int health = 100;
-   
+    [SerializeField] private GameObject _deathParticle;
     public Tower Tower { get => _tower; }
     public Caterpillar Caterpillar { get => _caterpillar; }
 
@@ -47,6 +47,7 @@ public class Tank : MonoBehaviour, IDamage
         {
             PlayerResults.kill++;
         }
+        Instantiate(_deathParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

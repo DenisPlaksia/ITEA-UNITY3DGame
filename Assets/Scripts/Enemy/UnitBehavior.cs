@@ -13,7 +13,7 @@ public class UnitBehavior : MonoBehaviour
     [SerializeField] private State EnemyShootingState;
     [SerializeField] private State WalkToWinZoneState;
     [SerializeField] private State HealthFindState;
-
+    [SerializeField] private LayerMask wathIsEnemy;
     [Header("Actual state")]
     [SerializeField] private State currentState;
     private ShootComponent shootComponent;
@@ -47,7 +47,7 @@ public class UnitBehavior : MonoBehaviour
     {
         SetAllComponents();
         SetState(StartState);
-        meshAgent.speed = tank.Tower._towerTankData.GetSpeed();
+        meshAgent.speed = tank.Caterpillar.CaterpillarData.GetSpeed();
     }
 
     private void SetAllComponents()
@@ -67,7 +67,7 @@ public class UnitBehavior : MonoBehaviour
         }
         else if (shootComponent.Ammo <= 2)
         {
-            
+
             SetState(AmmoFindState);
         }
         else if (Tank.GetHealth() <= 50)
@@ -87,7 +87,7 @@ public class UnitBehavior : MonoBehaviour
 
     public void SetState(State state)
     {
-        
+
         currentState = Instantiate(state);
         currentState.unit = this;
         currentState.Init();
@@ -98,33 +98,32 @@ public class UnitBehavior : MonoBehaviour
         currentState.Stop();
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
     {
-        if (other.gameObject.tag == tagForEnemy)
+        FindNearesBlock(transform.position);
+    }
+
+    //Try to change code under
+
+    private void FindNearesBlock(Vector3 center)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center, 7f, wathIsEnemy);
+        foreach (var hitCollider in hitColliders)
         {
-            currentState.Stop();
-            SetState(EnemyShootingState);
+            if (hitCollider.gameObject.tag == tagForEnemy)
+            {
+                //currentState.Stop();
+                var targetPosition = hitCollider.transform.position;
+                targetPosition.y = transform.position.y;
+                tank.Tower.transform.LookAt(targetPosition);
+                SetState(EnemyShootingState); 
+            }
+            else
+            {
+                return;
+            }
         }
     }
 
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == tagForEnemy)
-        {
-            var targetPosition = other.transform.position;
-            targetPosition.y = transform.position.y;
-            tank.Tower.transform.LookAt(targetPosition);
-        }
-
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == tagForEnemy)
-        {
-            currentState.Stop();
-            SetState(WalkToWinZoneState);
-        }
-    }
-
+    //
 }

@@ -5,7 +5,6 @@ public class TowerMoveComponent : MonoBehaviour
     [SerializeField] private VariableJoystick _towerMovementJoystick = null;
 
     private Vector3 _direction;
-
     public float Speed { get; private set; }
     private void Start()
     {

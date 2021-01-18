@@ -9,7 +9,7 @@ public class ShootComponent : MonoBehaviour
     public event Action<int> OnAmmoChange;
     private Ray _ray;
     private bool _canAttack;
-
+    private AudioSource _shootAudioSource;
     public int Ammo { get; private set; }
     public float TimeBetweenAtack { get; private set; }
     private void ResetAttack() => _canAttack = false;
@@ -18,6 +18,7 @@ public class ShootComponent : MonoBehaviour
     {
         Ammo = GetComponent<Tower>()._towerTankData.GetAmmo();
         TimeBetweenAtack = GetComponent<Tower>()._towerTankData.GetTimeBetweenAtack();
+        _shootAudioSource = GetComponent<AudioSource>();
         OnAmmoChange?.Invoke(Ammo);
     }
 
@@ -38,6 +39,7 @@ public class ShootComponent : MonoBehaviour
             bullet.gameObject.name = transform.parent.name;
             Invoke(nameof(ResetAttack), TimeBetweenAtack);
             Ammo--;
+            _shootAudioSource?.Play();
             OnAmmoChange?.Invoke(Ammo);
         }
     }

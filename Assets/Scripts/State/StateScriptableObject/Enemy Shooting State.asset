@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Enemy Shooting State
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  target: {fileID: 0}
+  target: 0
   AmmoFindState: {fileID: 11400000, guid: a030a69f3a3987f40b1dad26732f6e80, type: 2}
+  HealthFindState: {fileID: 11400000, guid: c2d39454b68ee6248a7dcd948392140b, type: 2}
