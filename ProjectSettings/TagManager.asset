@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Team
   - Health
+  - Home
   layers:
   - Default
   - TransparentFX

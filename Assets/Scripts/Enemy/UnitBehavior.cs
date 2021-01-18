@@ -112,7 +112,6 @@ public class UnitBehavior : MonoBehaviour
         {
             if (hitCollider.gameObject.tag == tagForEnemy)
             {
-                //currentState.Stop();
                 var targetPosition = hitCollider.transform.position;
                 targetPosition.y = transform.position.y;
                 tank.Tower.transform.LookAt(targetPosition);
@@ -120,6 +119,7 @@ public class UnitBehavior : MonoBehaviour
             }
             else
             {
+                currentState.Stop();
                 return;
             }
         }
