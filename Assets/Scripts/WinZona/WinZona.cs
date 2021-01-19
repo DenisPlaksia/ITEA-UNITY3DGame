@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WinZona : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private LayerMask _whatIsEnemy;
+    [SerializeField] private PVPGameManger pVPGame;
+    [SerializeField] private string message;
+    public void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.gameObject.layer == _whatIsEnemy)
+        {
+            pVPGame.LoseGame(message);
+        }
     }
 }

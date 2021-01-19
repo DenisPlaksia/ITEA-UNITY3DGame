@@ -6,8 +6,8 @@ using TMPro;
 public class PVPGameManger : MonoBehaviour
 {
     [SerializeField] private GameResults gameResults;
-    private List<Enemy> enemyList = new List<Enemy>();
-    private List<Teammate> teamList = new List<Teammate>();
+    public static List<Enemy> enemyList = new List<Enemy>();
+    public static List<Teammate> teamList = new List<Teammate>();
     [SerializeField] private TextMeshProUGUI _PlayerCount;
 
     private void Start()
@@ -35,8 +35,7 @@ public class PVPGameManger : MonoBehaviour
         enemyList.Remove(tank.GetComponent<Enemy>());
         if(enemyList.Count == 0)
         {
-            gameResults.OpenWindow();
-            gameResults.SetResults("You win");
+            LoseGame("You win");
         }
     }
 
@@ -46,9 +45,14 @@ public class PVPGameManger : MonoBehaviour
         teamList.Remove(tank.GetComponent<Teammate>()); 
         if (teamList.Count == 0)
         {
-            gameResults.OpenWindow();
-            gameResults.SetResults("You lose");
+            LoseGame("You lose");
         }
+    }
+
+    public void LoseGame(string txt)
+    {
+        gameResults.OpenWindow();
+        gameResults.SetResults(txt);
     }
 
 }
