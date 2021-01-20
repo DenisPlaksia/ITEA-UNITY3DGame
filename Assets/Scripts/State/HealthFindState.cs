@@ -37,10 +37,19 @@ public class HealthFindState : State
 
     private void MoveToAmmo()
     {
-        unit.MeshAgent.SetDestination(_health.position);
-        if (unit.transform.position == _health.position)
+        if(_health != null)
+        {
+            unit.MeshAgent.SetDestination(_health.position);
+            if (unit.transform.position == _health.position)
+            {
+                IsFinished = true;
+            }
+
+        }
+        else
         {
             IsFinished = true;
+
         }
     }
 }

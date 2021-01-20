@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class PVPGameManger : MonoBehaviour
 {
     [SerializeField] private GameResults gameResults;
     public static List<Enemy> enemyList = new List<Enemy>();
     public static List<Teammate> teamList = new List<Teammate>();
     [SerializeField] private TextMeshProUGUI _PlayerCount;
-
     private void Start()
     {
         var enemy = GameObject.FindObjectsOfType<Enemy>();
         var team = GameObject.FindObjectsOfType<Teammate>();
-
         enemyList.AddRange(enemy);
         teamList.AddRange(team);
         _PlayerCount.SetText($"Team:{teamList.Count} vs Enemy:{enemyList.Count}");
@@ -28,14 +27,14 @@ public class PVPGameManger : MonoBehaviour
             item.GetComponent<Tank>().OnDeath += RemoveFromTeammateList;
         }
     }
-
     private void RemoveFromEnemyList(Tank tank,string name)
     {
         _PlayerCount.SetText($"Team:{teamList.Count} vs Enemy:{enemyList.Count}");
         enemyList.Remove(tank.GetComponent<Enemy>());
         if(enemyList.Count == 0)
         {
-            LoseGame("You win");
+            gameResults.OpenWindow();
+            gameResults.SetResults("You win");
         }
     }
 
@@ -45,7 +44,8 @@ public class PVPGameManger : MonoBehaviour
         teamList.Remove(tank.GetComponent<Teammate>()); 
         if (teamList.Count == 0)
         {
-            LoseGame("You lose");
+            gameResults.OpenWindow();
+            gameResults.SetResults("You Lose");
         }
     }
 

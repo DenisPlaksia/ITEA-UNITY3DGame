@@ -82,7 +82,7 @@ public class UnitBehavior : MonoBehaviour
         {
             SetState(WalkToWinZoneState);
         }
-
+        FindNearesBlock(transform.position);
     }
 
     public void SetState(State state)
@@ -98,10 +98,10 @@ public class UnitBehavior : MonoBehaviour
         currentState.Stop();
     }
 
-    private void FixedUpdate()
+/*    private void FixedUpdate()
     {
         FindNearesBlock(transform.position);
-    }
+    }*/
 
     //Try to change code under
 
@@ -120,7 +120,7 @@ public class UnitBehavior : MonoBehaviour
             else
             {
                 currentState.Stop();
-                return;
+                break;
             }
         }
     }

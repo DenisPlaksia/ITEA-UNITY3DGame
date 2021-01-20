@@ -38,8 +38,15 @@ public class AmmoFindState : State
 
     private void MoveToAmmo()
     {
-        unit.MeshAgent.SetDestination(_ammo.position);
-        if(unit.transform.position == _ammo.position)
+        if(_ammo != null)
+        {
+            unit.MeshAgent.SetDestination(_ammo.position);
+            if(unit.transform.position == _ammo.position)
+            {
+                IsFinished = true;
+            }
+        }
+        else
         {
             IsFinished = true;
         }
