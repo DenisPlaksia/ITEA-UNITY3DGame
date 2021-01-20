@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2694a9baf4380448af3f590f28acf56, type: 3}
   m_Name: StandartCaterpillar
   m_EditorClassIdentifier: 
-  _speed: 1.5
+  _speed: 1.3
