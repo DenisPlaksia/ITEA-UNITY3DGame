@@ -98,11 +98,6 @@ public class UnitBehavior : MonoBehaviour
         currentState.Stop();
     }
 
-/*    private void FixedUpdate()
-    {
-        FindNearesBlock(transform.position);
-    }*/
-
     //Try to change code under
 
     private void FindNearesBlock(Vector3 center)
